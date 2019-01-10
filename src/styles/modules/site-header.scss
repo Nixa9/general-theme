@@ -7,3 +7,28 @@
     width: 100%;
   }
 }
+
+header {
+  display: flex;
+  align-items: center;
+
+  .site-logo {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  nav {
+
+    display: flex;
+    justify-content: center;
+
+    li {
+      display: inline-block;
+    }
+  }
+
+  .search-cart {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
