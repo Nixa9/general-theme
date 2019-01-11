@@ -7,6 +7,6 @@ html {
 .page-width {
   @include clearfix();
   max-width: $width-site;
-  padding: 0 $gutter;
+  padding: 0 $gutter 0 0;
   margin: 0 auto;
 }

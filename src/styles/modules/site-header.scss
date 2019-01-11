@@ -32,3 +32,30 @@ header {
     justify-content: flex-end;
   }
 }
+
+form {
+  display: flex;
+}
+
+
+#showhide {
+  display: flex;
+  justify-content: flex-end;
+  height:24px;
+  width:24px;
+  margin:0 5px;
+  cursor: pointer;
+}
+#showhide #link {
+  width: 24px;
+  height: 24px;
+
+}
+#showhide.closed #link {
+  width: 24px;
+  height: 24px;
+}
+
+#search2 {
+  display:none;
+}
