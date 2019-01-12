@@ -37,25 +37,21 @@ form {
   display: flex;
 }
 
-
-#showhide {
-  display: flex;
-  justify-content: flex-end;
-  height:24px;
-  width:24px;
-  margin:0 5px;
-  cursor: pointer;
-}
-#showhide #link {
-  width: 24px;
-  height: 24px;
-
-}
-#showhide.closed #link {
-  width: 24px;
-  height: 24px;
+input {
+  display: none;
 }
 
-#search2 {
-  display:none;
+#link:focus input {
+  display:inline-block;
+}
+
+.parent ul {
+  display: none;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+}
+
+.parent:hover ul {
+  display: block;
 }
