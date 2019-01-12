@@ -101,7 +101,7 @@
         {% include 'icon-bag' %}
         <!-- {{ 'layout.cart.title' | t }} -->
 
-        {{ cart.item_count }} {{ 'layout.cart.items_count' | t: count: cart.item_count }} / {{ cart.total_price }}
+        {{ cart.item_count }} {{ 'layout.cart.items_count' | t: count: cart.item_count }} / {{ cart.total_price | money }}
       </a>
 
       {% if shop.customer_accounts_enabled %}
