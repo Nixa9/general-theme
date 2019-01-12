@@ -100,6 +100,7 @@
       <a href="/cart">
         {% include 'icon-bag' %}
         <!-- {{ 'layout.cart.title' | t }} -->
+
         {{ cart.item_count }} {{ 'layout.cart.items_count' | t: count: cart.item_count }} / {{ cart.total_price }}
       </a>
 
