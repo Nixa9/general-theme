@@ -1,16 +1,16 @@
 <style>
   {% if section.settings.logo != blank %}
     .site-header__logo-image {
-      max-width: {{ section.settings.logo_max_width }}px;
+      width: {{ section.settings.logo_max_width }}px;
     }
   {% endif %}
 </style>
 <div data-section-id="{{ section.id }}" data-section-type="header-section">
-  <header class="page-width grid--uniform" role="banner">
+  <header class="grid page-width grid--uniform" role="banner">
     {% if template.name == 'index' %}
-      <h1 class="grid__item one-third" itemscope itemtype="http://schema.org/Organization">
+      <h1 class="grid__item one-twelfth" itemscope itemtype="http://schema.org/Organization">
     {% else %}
-      <div class="h1 grid__item one-third" itemscope itemtype="http://schema.org/Organization">
+      <div class="h1 grid__item one-twelfth" itemscope itemtype="http://schema.org/Organization">
     {% endif %}
         <a href="/" itemprop="url" class="site-logo{% if section.settings.logo != blank %} site-header__logo-image{% endif %}">
           {% if section.settings.logo != blank %}
@@ -29,11 +29,12 @@
       </div>
     {% endif %}
 
-    <nav class="grid__item one-third" role="navigation">
+    {% if template.name == 'index' %}
+    <nav class="grid__item six-twelfths" role="navigation">
       <ul class="parent">
         {% for link in linklists[section.settings.main_linklist].links %}
           {% if link.links != blank %}
-            <li {% if link.active %} class="active {% if link.child_active %}child-active{% endif %}"{% endif %}>
+            <li class="nav-padding" {% if link.active %} class="active {% if link.child_active %}child-active{% endif %}"{% endif %}>
               <a href="{{ link.url }}">{{ link.title | escape }}</a>
               <ul class="child">
                 {% for childlink in link.links %}
@@ -57,7 +58,7 @@
               </ul>
             </li>
           {% else %}
-            <li {% if link.active %} class="active {% if link.child_active %}child-active{% endif %}"{% endif %}>
+            <li class="nav-padding" {% if link.active %} class="active {% if link.child_active %}child-active{% endif %}"{% endif %}>
               <a href="{{ link.url }}">{{ link.title | escape }}</a>
             </li>
           {% endif %}
@@ -65,44 +66,39 @@
       </ul>
     </nav>
 
-    <div class="search-cart grid__item one-third">
+    <div class="search-cart grid__item five-twelfths">
 
-      <form action="/search" method="get" role="search">
-        <label for="Search" class="label-hidden">
+      <h5 class="my-account"><a href="/my-account">My account</a></h5>
+
+      <form action="/search" method="get" role="search" action="/search">
+
+        <label for="Search-{{ section.id }}" class="label-hidden">
           {{ 'general.search.placeholder' | t }}
         </label>
 
-        <input type="search"
-               id="search2"
-               name="q"
-               size="20"
-               value="{{ search.terms | escape }}"
-               placeholder="{{ 'general.search.placeholder' | t }}">
-        </input>
+          <!--<div class="search_trigger">
+            {% include 'icon-search' %}
+          </div>-->
 
-        <a id="showhide" class="closed">
-              <div id="link">
-                {% include 'icon-search' %}
-
-                <input type="search"
-                       id="search2"
-                       name="q"
-                       size="20"
-                       value="{{ search.terms | escape }}"
-                       placeholder="{{ 'general.search.placeholder' | t }}">
-                </input>
-              </div>
-
-        </a>
+          <input class="search" type="search"
+            name="q"
+            id="Search-{{ section.id }}"
+            value="{{ search.terms | escape }}"
+            placeholder="What are you looking for?">
 
       </form>
 
-      <a href="/cart">
+      <div class="search-bg"></div>
+
+      <div class="search_trigger" aria-expanded="true" aria-haspopup="true">{% include 'icon-search' %}</div>
+
+
+      <h5><a class="cart-text" href="/cart">
         {% include 'icon-bag' %}
         <!-- {{ 'layout.cart.title' | t }} -->
 
         {{ cart.item_count }} {{ 'layout.cart.items_count' | t: count: cart.item_count }} / {{ cart.total_price | money }}
-      </a>
+      </a></h5>
 
       {% if shop.customer_accounts_enabled %}
         <ul>
@@ -130,11 +126,121 @@
       {% endif %}
 
     </div>
+    {% else %}
+    <nav class="header__else grid__item six-twelfths" role="navigation">
+      <ul class="parent">
+        {% for link in linklists[section.settings.main_linklist].links %}
+          {% if link.links != blank %}
+            <li class="nav-padding" {% if link.active %} class="active {% if link.child_active %}child-active{% endif %}"{% endif %}>
+              <a href="{{ link.url }}">{{ link.title | escape }}</a>
+              <ul class="child">
+                {% for childlink in link.links %}
+                  {% if childlink.links != blank %}
+                    <li {% if childlink.active %} class="active {% if childlink.child_active %}child-active{% endif %}"{% endif %}>
+                      <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                      <ul class="grandchild">
+                        {% for grandchildlink in childlink.links %}
+                          <li {% if grandchildlink.active %} class="active {% if grandchildlink.child_active %}child-active{% endif %}"{% endif %}>
+                            <a href="{{ grandchildlink.url }}">{{ grandchildlink.title | escape }}</a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    </li>
+                  {% else %}
+                    <li {% if childlink.active %} class="active {% if childlink.child_active %}child-active{% endif %}"{% endif %}>
+                      <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </li>
+          {% else %}
+            <li class="nav-padding" {% if link.active %} class="active {% if link.child_active %}child-active{% endif %}"{% endif %}>
+              <a href="{{ link.url }}">{{ link.title | escape }}</a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
 
+    <div class="header__else search-cart grid__item five-twelfths">
+
+      <h5 class="my-account"><a href="/my-account">My account</a></h5>
+
+      <form action="/search" method="get" role="search" action="/search">
+
+        <label for="Search-{{ section.id }}" class="label-hidden">
+          {{ 'general.search.placeholder' | t }}
+        </label>
+
+          <!--<div class="search_trigger">
+            {% include 'icon-search' %}
+          </div>-->
+
+          <input class="search" type="search"
+            name="q"
+            id="Search-{{ section.id }}"
+            value="{{ search.terms | escape }}"
+            placeholder="What are you looking for?">
+
+      </form>
+
+      <div class="search-bg"></div>
+
+      <div class="search_trigger" aria-expanded="true" aria-haspopup="true">{% include 'icon-search' %}</div>
+
+
+      <h5><a class="cart-text" href="/cart">
+        {% include 'icon-bag' %}
+        <!-- {{ 'layout.cart.title' | t }} -->
+
+        {{ cart.item_count }} {{ 'layout.cart.items_count' | t: count: cart.item_count }} / {{ cart.total_price | money }}
+      </a></h5>
+
+      {% if shop.customer_accounts_enabled %}
+        <ul>
+          {% if customer %}
+            <li>
+              {% if customer.first_name != blank %}
+                {% capture first_name %}<a href="/account">{{ customer.first_name }}</a>{% endcapture %}
+                {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
+              {% else %}
+                <a href="/account">{{ 'layout.customer.account' | t }}</a>
+              {% endif %}
+            </li>
+            <li>
+              {{ 'layout.customer.log_out' | t | customer_logout_link }}
+            </li>
+          {% else %}
+            <li>
+              {{ 'layout.customer.log_in' | t | customer_login_link }}
+            </li>
+            <li>
+              {{ 'layout.customer.create_account' | t | customer_register_link }}
+            </li>
+          {% endif %}
+        </ul>
+      {% endif %}
+
+    </div>
+    <hr class="grid__item one-whole header__space">
+    {% endif %}
   </header>
 
 
 </div>
+
+<script type="text/javascript">
+  $('.search_trigger').click(function() {
+    $('form').slideDown(200);
+    $('form').show();
+    $('.search-bg').show();
+    $('.search-bg').click(function() {
+      $('form').slideUp(200);
+      $('.search-bg').hide();
+    });
+  })
+</script>
 
 {% schema %}
   {

@@ -1,0 +1,21 @@
+.featured-collection {
+  margin-bottom: 64px;
+  h3 {
+    margin: $space-m 0;
+    font-weight: $font-weight-medium;
+    color: $color-secondary;
+  }
+  .featured-collection-item {
+    margin-bottom: $space-m;
+
+    h5 {
+      margin-top: $space-s;
+      text-align: center;
+      color: $color-secondary;
+      span {
+        color: $color-body-text;
+        margin-left: $space-xs;
+      }
+    }
+  }
+}

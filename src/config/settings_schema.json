@@ -8,34 +8,50 @@
     "theme_support_url": "https://github.com/Shopify/slate"
   },
   {
-    "name": "Typography",
-    "settings": [
-      {
-        "type": "select",
-        "id": "type_base_size",
-        "label": "Base size",
-        "default": "16px",
-        "options": [
-          {
-            "value": "14px",
-            "label": "14px"
-          },
-          {
-            "value": "15px",
-            "label": "15px"
-          },
-          {
-            "value": "16px",
-            "label": "16px"
-          },
-          {
-            "value": "17px",
-            "label": "17px"
-          }
-        ]
-      }
-    ]
-  },
+      "name": "Typography",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Headings and buttons"
+        },
+        {
+          "type": "font_picker",
+          "id": "header_font_new",
+          "label": "Font",
+          "default": "work_sans_n6"
+        },
+        {
+          "type": "range",
+          "id": "header_base_size",
+          "label": "Heading base size",
+          "default": 64,
+          "min": 20,
+          "max": 64,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "header",
+          "content": "Body text"
+        },
+        {
+          "type": "font_picker",
+          "id": "base_font_new",
+          "label": "Font",
+          "default": "work_sans_n4"
+        },
+        {
+          "type": "range",
+          "id": "body_base_size",
+          "label": "Base size",
+          "default": 16,
+          "min": 14,
+          "max": 20,
+          "step": 1,
+          "unit": "px"
+        }
+      ]
+    },
   {
     "name": "Colors",
     "settings": [
@@ -47,15 +63,21 @@
         "type": "color",
         "id": "color_primary",
         "label": "Primary color",
-        "default": "#000",
+        "default": "#f5f5f5",
         "info": "Used for text links, and primary buttons"
       },
       {
         "type": "color",
-        "id": "color_body_text",
-        "label": "Text color",
-        "default": "#000",
+        "id": "color_secondary",
+        "label": "Secondary color",
+        "default": "#C87A4A",
         "info": "Color used for content and paragraph text"
+      },
+      {
+        "type": "color",
+        "id": "benefits_background",
+        "label": "Background",
+        "default": "#f5f5f5"
       }
     ]
   },

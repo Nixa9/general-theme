@@ -1,0 +1,39 @@
+.newsletter {
+  .newsletter-item {
+    .newsletter-item-inner {
+      /* display: flex;
+      flex-direction: column;
+      justify-content: center; */
+      padding: 128px 0 128px $gutter;
+      h1 {
+        margin-bottom: 48px;
+        color: $color-body;
+        text-align: center;
+      }
+      form {
+        position: relative;
+        border: 0;
+        text-align: center;
+        input {
+          width: 300px;
+          padding: 24px;
+          color: $color-secondary;
+          &::placeholder {
+            color: $color-body-text;
+          }
+        }
+        button {
+          width: 64px;
+          height: 64px;
+          background: $color-body;
+          border: 0;
+          position: absolute;
+
+          svg {
+            fill: $color-body-text;
+          }
+        }
+      }
+    }
+  }
+}

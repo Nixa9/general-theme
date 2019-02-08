@@ -1,0 +1,117 @@
+{% if section.settings.benefits_checkbox %}
+
+<div class="benefits">
+  <div class="page-width grid--uniform">
+
+    {% case section.blocks.size %}
+      {% when 0 %}
+      {% when 1 %}
+        {% assign column_width = 'text-center' %}
+      {% when 2 %}
+        {% assign column_width = 'one-half' %}
+      {% when 3 %}
+        {% assign column_width = 'one-third' %}
+      {% when 4 %}
+        {% assign column_width = 'one-quarter' %}
+    {% endcase %}
+
+    {% for block in section.blocks %}
+      <div class="block grid__item {{ column_width }}" {{ block.shopify_attributes }}>
+
+          {% case block.settings.benefit_icon %}
+            {% when 'Bag' %}
+              {% include 'icon-bag' %}
+            {% when 'Search' %}
+              {% include 'icon-search' %}
+          {% endcase %}
+
+        <p>{{ block.settings.benefit_info }}</p>
+      </div>
+    {% endfor %}
+
+  </div>
+</div>
+
+{% else %}
+
+<div class="benefits benefits-color-off">
+  <div class="page-width grid--uniform">
+
+    {% case section.blocks.size %}
+      {% when 0 %}
+      {% when 1 %}
+        {% assign column_width = 'text-center' %}
+      {% when 2 %}
+        {% assign column_width = 'one-half' %}
+      {% when 3 %}
+        {% assign column_width = 'one-third' %}
+      {% when 4 %}
+        {% assign column_width = 'one-quarter' %}
+    {% endcase %}
+
+    {% for block in section.blocks %}
+      <div class="block grid__item {{ column_width }}" {{ block.shopify_attributes }}>
+
+          {% case block.settings.benefit_icon %}
+            {% when 'Bag' %}
+              {% include 'icon-bag' %}
+            {% when 'Search' %}
+              {% include 'icon-search' %}
+          {% endcase %}
+
+        <p>{{ block.settings.benefit_info }}</p>
+      </div>
+    {% endfor %}
+
+  </div>
+</div>
+
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Benefits",
+    "settings": [
+      {
+        "id": "benefits_checkbox",
+        "type": "checkbox",
+        "label": "Background Off/On"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Benefits",
+        "category": "New sections"
+      }
+    ],
+    "blocks": [
+    {
+      "type": "select",
+      "name": "select",
+      "settings": [
+      {
+        "type": "text",
+        "id": "benefit_info",
+        "label": "Info",
+        "default": "Free shipping on orders over $50"
+      },
+      {
+        "type": "select",
+        "id": "benefit_icon",
+        "label": "Select icon",
+        "options": [
+        {
+          "value": "Bag"
+        },
+        {
+          "value": "Search"
+        }
+        ]
+      }
+      ]
+
+    }
+    ]
+  }
+
+{% endschema %}

@@ -1,0 +1,47 @@
+
+<div class="slider" style="background: url('{{ section.settings.sliderbg | img_url: '1920x1080' }}'); background-size: cover; background-position: center;">
+  <div class="fix-width grid--uniform">
+      <div class="slider-content grid__item medium-up--eight-twelfths medium-up--push-two-twelfths">
+
+        <h1>{{ section.settings.slider_h1 }}</h1>
+        <h4>{{ section.settings.slider_h4 }}</h4>
+        <h5><a class="button_primary" href="#">{{ section.settings.slider_a }}</a></h5>
+
+      </div>
+
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Slider",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "sliderbg",
+        "label": "Slider image"
+      },
+      {
+        "type": "text",
+        "id": "slider_h1",
+        "label": "Headline",
+        "placeholder": "Grooming Essentials",
+        "default": "Groooooming"
+      },
+      {
+        "type": "text",
+        "id": "slider_h4",
+        "label": "Description",
+        "placeholder": "Grooming Essentials",
+        "default": "Groooooming"
+      },
+      {
+        "type": "text",
+        "id": "slider_a",
+        "label": "Button text",
+        "placeholder": "Link",
+        "default": "Try it now"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,59 @@
+<div class="page-width grid--uniform">
+  <hr>
+</div>
+<div class="testimonials page-width grid--uniform">
+
+  <div class="grid__item one-half">
+
+    <div class="testimonials__space">
+      <h4 class="testimonials-quote">“{{ section.settings.testimonials_h4 }}“</h4>
+      <div class="testimonials-inner">
+        <div class="custom-divider"></div>
+        <h4 class="testimonials-author">{{ section.settings.author_h4 }}</h4>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="grid__item one-half">
+
+    <div class="testimonials__space">
+      <h4 class="testimonials-quote">“Handcrafted products for men, created with natural ingredients from the Mediterranean handcrafted products for men.“</h4>
+      <div class="testimonials-inner">
+        <div class="custom-divider"></div>
+        <h4 class="testimonials-author">Harley Finkelstein</h4>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+{% schema %}
+  {
+    "name": "Testimonials",
+    "settings": [
+      {
+        "type": "text",
+        "id": "testimonials_h4",
+        "label": "Testimonials quote",
+        "placeholder": "Grooming Essentials",
+        "default": "Handcrafted products for men, created with natural ingredients from the Mediterranean handcrafted products for men."
+      },
+      {
+        "type": "text",
+        "id": "author_h4",
+        "label": "Author",
+        "placeholder": "Grooming Essentials",
+        "default": "Harley Finkelstein"
+      }
+    ]
+    ,
+    "presets": [
+      {
+        "name": "Testimonials",
+        "category": "New sections"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,34 @@
+.benefits {
+  background: $color-benefits-background;
+  height: 15vh;
+  display: flex;
+  align-items: center;
+
+    .block {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      p {
+        color: $color-body-text;
+        font-weight: $font-weight-normal;
+        padding-right: 2em;
+
+      }
+    } /* End of .block */
+
+    .icon {
+      min-width: 28px;
+      min-height: 28px;
+      margin: 0 $space-s 0 0;
+      fill: $color-body-text;
+    }
+} /* End of .benefits */
+
+.benefits-color-off {
+  background: none;
+}
+
+.text-center {
+  text-align: center;
+}

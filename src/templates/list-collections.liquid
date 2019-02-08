@@ -2,23 +2,40 @@
   This page represents the /collections and /products pages.
 {% endcomment %}
 
-<h1>{{ page_title }}</h1>
+<div class="collection-list page-width grid--uniform">
+  <h1 class="grid__item one-whole">{{ page_title }}</h1>
 
-{% for collection in collections %}
-  {% unless collection.handle == 'frontpage' %}
-    <a href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: title }}">
-      {% if collection.image != blank %}
-        {{ collection | img_url: '480x480' | img_tag: collection.title }}
-      {% elsif collection.products.first != blank %}
-        {{ collection.products.first | img_url: '480x480' | img_tag: collection.title }}
-      {% else %}
-        {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
-        {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
-      {% endif %}
-    </a>
+  {% for collection in collections %}
+    {% unless collection.handle == 'frontpage' %}
+      <div class="collection-item grid__item one-half">
+        <a class="collection-item-inner" href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: title }}">
+          <div class="collection-info">
 
-    <p>
-      <a href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: title }}">{{ collection.title }}</a>
-    </p>
-  {% endunless %}
-{% endfor %}
+            <div class="collection-info-info">
+              <h3>
+                {% if collection == empty %}
+                  {{ 'homepage.onboarding.collection_title' | t }}
+                {% else %}
+                  {{ collection.title }}
+                {% endif %}
+              </h3>
+              <h6>Handcrafted products for men created with natural ingredients.</h6>
+            </div>
+            <div class="collection-info-cta">
+              <h5>See more {% include 'icon-arrow-right' %}</h5>
+            </div>
+
+          </div>
+          {% if collection.image != blank %}
+            {{ collection | img_url: '480x480' | img_tag: collection.title }}
+          {% elsif collection.products.first != blank %}
+            {{ collection.products.first | img_url: '480x480' | img_tag: collection.title }}
+          {% else %}
+            {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+            {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+          {% endif %}
+        </a>
+      </div>
+    {% endunless %}
+  {% endfor %}
+</div>

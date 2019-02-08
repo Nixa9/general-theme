@@ -3,8 +3,9 @@
   display: inline-block;
   width: 24px;
   height: 24px;
+  /* margin: 12px; */
   vertical-align: middle;
-  fill: currentColor;
+  fill: {{ settings.color_primary }};
 
   .no-svg & {
     display: none;
@@ -12,7 +13,7 @@
 }
 
 .icon--wide {
-  width: 40px;
+  width: 30px;
 }
 
 svg,

@@ -1,0 +1,66 @@
+footer {
+  a {
+    color: $color-body-text;
+    text-decoration: underline;
+  }
+  hr {
+  }
+  .footer-margin {
+    margin: $space-xl 0;
+  }
+  h6 {
+    font-weight: $font-weight-light;
+  }
+  ul {
+    padding: 0;
+    li {
+      display: block;
+      text-decoration: underline;
+      line-height: 24px;
+      a {
+        color: $color-body-text;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.footer-margin form {
+  align-items: center;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  input {
+    width: 100%;
+    padding: 24px;
+    color: $color-secondary;
+    &::placeholder {
+      color: $color-body-text;
+    }
+  }
+  button {
+    width: 64px;
+    height: 64px;
+    background: $color-body;
+    border: 0;
+    position: absolute;
+
+    .icon {
+      fill: $color-body-text;
+    }
+  }
+}
+
+.footer-title {
+  color: $color-secondary;
+  margin-bottom: 12px;
+}
+
+.footer-paragraph {
+  color: $color-body-text;
+  font-weight: $font-weight-light;
+}
+
+.copyright {
+  padding: 36px 0;
+}

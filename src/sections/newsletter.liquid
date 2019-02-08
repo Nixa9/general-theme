@@ -1,0 +1,43 @@
+<div class="newsletter" style="background: url('{{ section.settings.newsletter_bg | img_url: '1920x1080' }}'); background-size: cover; background-position: center;">
+  <div class="newsletter-item page-width grid--uniform">
+
+    <div class="newsletter-item-inner grid__item medium-up--eight-twelfths medium-up--push-two-twelfths">
+      <h1>{{ section.settings.newsletter_h1 }}</h1>
+      <form action="index.html" method="post">
+        <input type="text" name="newsletter" placeholder="Enter your e-mail here">
+        <button type="submit" name="" value="">
+          {% include 'icon-send' %}
+        </button>
+      </form>
+    </div>
+
+  </div>
+
+</div>
+
+{% schema %}
+  {
+    "name": "Newsletter",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "newsletter_bg",
+        "label": "Newsletter image"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_h1",
+        "label": "Newsletter",
+        "placeholder": "Grooming Essentials",
+        "default": "Sign up and save $10 on first order"
+      }
+    ]
+    ,
+    "presets": [
+      {
+        "name": "Newsletter",
+        "category": "New sections"
+      }
+    ]
+  }
+{% endschema %}

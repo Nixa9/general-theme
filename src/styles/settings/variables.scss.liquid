@@ -1,11 +1,14 @@
 /*================ Color Variables ================*/
-$color-primary: {{ settings.color_primary }};
+$color-primary: #D99365;
+$color-secondary: #121C36;
 
 // Text colors
-$color-body-text: {{ settings.color_body_text }};
+$color-body-text: #A0A4AF;
 
 // Backgrounds
 $color-body: #fff;
+$color-background: #f5f5f5;
+$color-benefits-background: {{ settings.benefits_background }};
 
 // Border colors
 $color-border: #f6f6f6;
@@ -19,14 +22,46 @@ $color-success: #000;
 $color-success-bg: #000;
 
 /*================ Typography Variables ================*/
+$font-weight-light: 100;
 $font-weight-normal: 400;
+$font-weight-medium: 500;
 $font-weight-bold: 700;
 
-$font-stack-header: 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$font-weight-header: $font-weight-bold;
+/*================ Typography ================*/
 
-$font-stack-body: 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$font-size-base: {{ settings.type_base_size }};
+{% assign header_font = settings.header_font_new %}
+{% assign base_font = settings.base_font_new %}
+
+{{ header_font | font_face }}
+{{ base_font | font_face }}
+
+{%- assign base_font_bold = base_font | font_modify: 'weight', 'bolder' -%}
+{%- assign base_font_italic = base_font | font_modify: 'style', 'italic' -%}
+{%- assign base_font_bold_italic = base_font_bold | font_modify: 'style', 'italic' -%}
+
+{{ base_font_bold | font_face }}
+{{ base_font_italic | font_face }}
+{{ base_font_bold_italic | font_face }}
+
+$font-stack-header: {{ header_font.family }}, {{ header_font.fallback_families }};
+$font-style-header: {{ header_font.style }};
+$font-weight-header: {{ header_font.weight }};
+$font-size-header: {{ settings.header_base_size }}px;
+
+$font-stack-body: {{ base_font.family }}, {{ base_font.fallback_families }};
+$font-style-body: {{ base_font.style }};
+$font-weight-body: {{ base_font.weight }};
+$font-size-base: {{ settings.body_base_size }}px;
+
+/*================ Margins & Paddings ================*/
+$space-xxs: 4px;
+$space-xs: 8px;
+$space-s: 16px;
+$space-m: 32px;
+$space-l: 48px;
+$space-xl: 64px;
+$space-xxl: 128px;
+$space-xxxl: 256px;
 
 /*============================================================================
   Grid Breakpoints and Class Names
@@ -35,7 +70,7 @@ $font-size-base: {{ settings.type_base_size }};
 $grid-medium: 750px;
 $grid-large: 990px;
 $grid-widescreen: 1400px;
-$grid-gutter: 30px;
+$grid-gutter: 20px;
 
 $small: 'small';
 $medium: 'medium';
@@ -66,11 +101,11 @@ $breakpoints: (
     - Will not work if `styles/global/grid.scss` is removed
 ==============================================================================*/
 $breakpoint-has-widths: ($small, $medium-up);
-$breakpoint-has-push: ();
+$breakpoint-has-push: ($medium-up);
 
 /*================ Sizing Variables ================*/
-$width-site: 1180px;
-$gutter: 30px;
+$width-site: 1400px;
+$gutter: 20px;
 
 /*================ Z-Index ================*/
 $z-index-dropdown: 2;

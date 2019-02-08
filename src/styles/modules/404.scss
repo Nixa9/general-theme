@@ -1,0 +1,16 @@
+.error {
+  display: flex;
+  align-items: center;
+  margin: 19vh 0;
+  .error__icon {
+    .icon {
+      fill: $color-primary;
+      width: 128px;
+      height: 128px;
+      margin: 0;
+    }
+  }
+  .error__text {
+    margin-left: 48px;
+  }
+}

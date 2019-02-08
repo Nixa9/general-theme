@@ -44,10 +44,10 @@ section {
  * `article` contexts in Chrome, Firefox, and Safari.
  */
 
-h1 {
+/*h1 {
   font-size: 2em;
   margin: 0.67em 0;
-}
+}*/
 
 /* Grouping content
    ========================================================================== */
@@ -78,8 +78,12 @@ figure {
 
 hr {
   box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
   overflow: visible; /* 2 */
+  width: 100%;
+  margin-left: $gutter;
+  background-color: darken($color-background, 2%);
+  height: 1px;
+  border: 0;
 }
 
 /**
@@ -444,4 +448,9 @@ template {
 
 [hidden] {
   display: none;
+}
+
+h1, h2, h3, h4, h5, h6, p, a {
+  margin: 0;
+  padding: 0;
 }

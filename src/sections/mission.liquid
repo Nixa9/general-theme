@@ -1,0 +1,40 @@
+<div class="mission">
+  <div class="align-items page-width grid--uniform">
+
+    <div class="grid__item medium-up--eight-twelfths medium-up--two-twelfths">
+      <h3>{{ section.settings.mission_h2 }}</h3>
+      <h4>{{ section.settings.mission_h4 }}</h4>
+    </div>
+
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Mission",
+    "settings": [
+      {
+        "type": "text",
+        "id": "mission_h2",
+        "label": "Mission headline",
+        "placeholder": "Grooming Essentials",
+        "default": "Grooming Essentialsfrom the Mediterranean"
+      },
+      {
+        "type": "text",
+        "id": "mission_h4",
+        "label": "Mission descriptions",
+        "placeholder": "Grooming Essentials",
+        "default": "Handcrafted products for men, created with natural ingredients from the Mediterranean handcrafted products for men, created with natural ingredients the Mediterranean."
+      }
+    ]
+    ,
+    "presets": [
+      {
+        "name": "Mission",
+        "category": "New sections"
+      }
+    ]
+  }
+{% endschema %}

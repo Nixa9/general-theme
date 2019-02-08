@@ -1,14 +1,33 @@
-<div class="page-width grid--uniform">
+
+<div class="collection-list page-width grid--uniform">
+<hr>
 {% if section.settings.title != blank %}
-  <h2 class="grid__item one-whole">{{ section.settings.title | escape }}</h2>
+  <h3 class="grid__item one-whole">{{ section.settings.title | escape }}</h3>
 {% endif %}
 
 {% for block in section.blocks limit: section.blocks.size %}
+  {%- assign collection = collections[block.settings.collection] -%}
 
-    <div class="grid__item one-quarter" {{ block.shopify_attributes }}>
-      {%- assign collection = collections[block.settings.collection] -%}
+    <div class="collection-item grid__item one-half" {{ block.shopify_attributes }}>
+      <a class="collection-item-inner" href="{% if collection == empty %}#{% else %}{{ collection.url }}{% endif %}">
+        <div class="collection-info">
 
-      <a href="{% if collection == empty %}#{% else %}{{ collection.url }}{% endif %}">
+          <div class="collection-info-info">
+            <h3>
+              {% if collection == empty %}
+                {{ 'homepage.onboarding.collection_title' | t }}
+              {% else %}
+                {{ collection.title }}
+              {% endif %}
+            </h3>
+            <p>Handcrafted products for men created with natural ingredients.</p>
+          </div>
+          <div class="collection-info-cta">
+            <h5>See more {% include 'icon-arrow-right' %}</h5>
+          </div>
+
+        </div>
+
         {% if collection.image != blank %}
           {{ collection | img_url: '480x480' | img_tag: collection.title }}
         {% elsif collection.products.first != blank %}
@@ -17,16 +36,9 @@
           {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
           {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
         {% endif %}
-
-        <p>
-          {% if collection == empty %}
-            {{ 'homepage.onboarding.collection_title' | t }}
-          {% else %}
-            {{ collection.title }}
-          {% endif %}
-        </p>
       </a>
     </div>
+
 {% endfor %}
 </div>
 

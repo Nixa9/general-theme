@@ -1,0 +1,26 @@
+.testimonials {
+  margin: 128px auto;
+  display: flex;
+  .testimonials__space {
+    padding: 0 $space-l;
+    .testimonials-quote {
+      color: $color-body-text;
+      font-weight: $font-weight-normal;
+      margin-bottom: $space-m;
+    }
+    .testimonials-inner {
+      display: flex;
+      align-items: center;
+      .custom-divider {
+        width: 47px;
+        height: 3px;
+        background: $color-primary;
+        margin-right: $space-s;
+      }
+      .testimonials-author {
+        color: $color-secondary;
+        font-weight: $font-weight-normal;
+      }
+    }
+  }
+}

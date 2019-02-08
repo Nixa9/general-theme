@@ -1,0 +1,34 @@
+.slider {
+  height: 85vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  top: 0;
+  width: 100%;
+  margin-top: - 100px;
+
+  .slider-content {
+
+    h1 {
+      color: $color-body;
+      margin-bottom: $space-m;
+      text-align: center;
+    }
+
+    h4 {
+      margin-bottom: 64px;
+      color: $color-body;
+      font-weight: $font-weight-normal;
+      text-align: center;
+    }
+
+    h5 {
+      text-align: center;
+    }
+
+    a {
+      text-decoration: none;
+    }
+  }
+}

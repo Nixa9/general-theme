@@ -1,0 +1,17 @@
+.collection {
+  margin-bottom: $space-l;
+  .collection__title {
+    margin-top: $space-s;
+    text-align: center;
+    span {
+      color: $color-body-text;
+    }
+    a {
+      color: $color-secondary;
+    }
+  }
+}
+
+.collection__title {
+  color: red;
+}
